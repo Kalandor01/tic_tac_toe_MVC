@@ -1,0 +1,53 @@
+
+* {
+    box-sizing: border-box;
+}
+
+article, header, footer {
+    margin: auto;
+    max-width: 400px;
+    width: 80%;
+}
+
+footer {
+    text-align: center;
+}
+
+#playerNames, #infoBox, #winBox, .cell {
+    border-radius: 5px;
+    border: solid 1px black;
+    box-shadow: 5px 5px 10px 5px rgba(0,0,0,0.3);
+}
+
+.cell {
+    width: 100%;
+    text-align: center;
+    font-weight: bold;
+    display: flex;
+    justify-content:center;
+    align-items:center;
+}
+
+.cell>p {
+    margin: 5px;
+}
+
+#playerNames, #infoBox, #winBox, #field {
+    margin: 10px;
+    padding: 5px;
+}
+
+#infoBox {
+    color: green;
+    font-weight: bold;
+}
+
+#winBox {
+    color: rgb(145, 0, 145);
+}
+
+#field {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 5px;
+}
