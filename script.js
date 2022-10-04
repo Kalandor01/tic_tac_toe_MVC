@@ -1,5 +1,5 @@
-import FieldController from "../controller/fieldController.js";
-
+import FieldController from "..tic_tac_toe_MVC/controller/fieldController.js";
+// import FieldController from "../controller/fieldController.js";
 
 $(window).resize(function() {
     resize();
