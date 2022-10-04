@@ -1,6 +1,6 @@
-import InfoView from "/view/infoView.js"
-import CellView from "/view/cellView.js"
-import FieldModel from "/model/fieldModel.js"
+import InfoView from "../view/infoView.js"
+import CellView from "../view/cellView.js"
+import FieldModel from "../model/fieldModel.js"
 
 class FieldController {
     #fieldElem
