@@ -31,8 +31,9 @@ class CellView {
     }
 
     onClick() {
-        let cEvent = new CustomEvent("clickCell", {detail:(this.#pos)});
-        window.dispatchEvent(cEvent);
+        window.dispatchEvent(
+            new CustomEvent("clickCell", {detail:(this.#pos)})
+        );
     }
 }
 

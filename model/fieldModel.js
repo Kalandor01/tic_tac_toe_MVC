@@ -5,15 +5,13 @@ class FieldModel {
     #winner
     #cells = []
 
-    constructor(cells) {
+    constructor() {
         this.#nextPlayer = 0;
         this.#turn = 0;
         this.#winner = -1;
-        this.#cells = cells;
-    }
-
-    setCells(cells) {
-        this.#cells = cells;
+        for (let x = 0; x < 9; x++) {
+            this.#cells.push(-1);
+        }
     }
 
     getNextPlayer() {
@@ -29,11 +27,14 @@ class FieldModel {
     }
 
     nextTurn(cellNum) {
+        this.#cells[cellNum] = this.#nextPlayer;
         this.#nextPlayer = (this.#nextPlayer + 1) % 2;
         this.#turn++;
-        this.checkWinner(cellNum);
-        if(this.#turn >= 9 && this.#winner == -1)
-            this.#winner = 2;
+        if(this.#turn >= 5) {
+            this.checkWinner(cellNum);
+            if(this.#turn >= 9 && this.#winner == -1)
+                this.#winner = 2;
+        }
         return this.#winner != -1;
     }
 

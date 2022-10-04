@@ -14,7 +14,7 @@ class FieldController {
         for (let x = 0; x < 9; x++) {
             this.#cells.push(new CellView(this.#fieldElem, x));
         }
-        this.#fieldModel = new FieldModel(this.cellsConverter());
+        this.#fieldModel = new FieldModel();
         new InfoView();
         this.sendChPlayerEvt();
 
@@ -25,21 +25,13 @@ class FieldController {
 
     nextTurn(cellNum) {
         this.#cells[cellNum].setSymbol(this.#fieldModel.getNextPlayer());
-        this.#fieldModel.setCells(this.cellsConverter());
         let win = this.#fieldModel.nextTurn(cellNum);
         //events
         this.sendChPlayerEvt();
-        if(win)
+        if(win) {
+            $(window).off("clickCell");
             this.sendWinEvt();
-    }
-
-    cellsConverter() {
-        let cellsConv = [];
-        this.#cells.forEach(cell => {
-            let ch = cell.getSymbol();
-            cellsConv.push(ch != -1?ch:"-");
-        });
-        return cellsConv;
+        }
     }
 
     sendChPlayerEvt() {
@@ -51,7 +43,7 @@ class FieldController {
     }
 
     sendWinEvt() {
-        $(window).off("clickCell");
+        console.log(this.#fieldModel.getWinner());
         window.dispatchEvent(
             new CustomEvent("winGame", {detail:{
                 winner:this.#fieldModel.getWinner(),
